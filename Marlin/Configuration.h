@@ -155,7 +155,7 @@
 #define Z_DRIVER_TYPE  TMC2208
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
-//#define Z2_DRIVER_TYPE A4988
+#define Z2_DRIVER_TYPE TMC2208
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 //#define I_DRIVER_TYPE  A4988
@@ -165,7 +165,7 @@
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
 #define E0_DRIVER_TYPE TMC2208
-//#define E1_DRIVER_TYPE A4988
+//#define E1_DRIVER_TYPE TMC2208
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -1576,7 +1576,14 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -43.65, -10, 0 }
+
+// PROBE OFFSET VALUES FOR CUSTOM SATSANA AND CR-TOUCH MOUNT
+// SATSANA: https://www.printables.com/model/140833-satsana-remix-for-ender-3v2-and-ender-3-with-bltou
+// CR-TOUCH MOUNT: https://www.printables.com/model/143939-satsana-cr-touch-ender-3-v2-mount
+//#define NOZZLE_TO_PROBE_OFFSET { -43.65, -10, 1.15 }
+
+// PROBE OFFSET VALUES FOR STOCK ENDER 3 PRO SHROUD AND STOCK CR-TOUCH MOUNT
+#define NOZZLE_TO_PROBE_OFFSET { -44, -5, -1.48 }
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
