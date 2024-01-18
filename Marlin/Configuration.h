@@ -173,6 +173,7 @@
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
 
+#define NO_AUTO_ASSIGN_WARNING
 /**
  * Additional Axis Settings
  *
@@ -687,13 +688,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST {  22.20,  22.20 }
-    #define DEFAULT_Ki_LIST {   1.08,   1.08 }
-    #define DEFAULT_Kd_LIST { 114.00, 114.00 }
+    #define DEFAULT_Kp_LIST {  32.84,  32.84 }
+    #define DEFAULT_Ki_LIST {   3.30,   3.30 }
+    #define DEFAULT_Kd_LIST { 81.72, 81.72 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 114.00
+    #define DEFAULT_Kp 32.84
+    #define DEFAULT_Ki 3.30
+    #define DEFAULT_Kd 81.72
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -781,9 +782,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 169.57
+  #define DEFAULT_bedKi 33.88
+  #define DEFAULT_bedKd 565.81
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1237,7 +1238,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 99.30 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 424.9 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1583,7 +1584,10 @@
 //#define NOZZLE_TO_PROBE_OFFSET { -43.65, -10, 1.15 }
 
 // PROBE OFFSET VALUES FOR STOCK ENDER 3 PRO SHROUD AND STOCK CR-TOUCH MOUNT
-#define NOZZLE_TO_PROBE_OFFSET { -44, -5, -1.48 }
+//#define NOZZLE_TO_PROBE_OFFSET { -44, -5, -1.63 }
+
+// PROBE OFFSET VALUES FOR SPRITE EXTRUDER PRO AND STOCK CR-TOUCH MOUNT
+#define NOZZLE_TO_PROBE_OFFSET { -32, -40.5, -2.76 }
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -1593,7 +1597,7 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 20
+#define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1828,7 +1832,8 @@
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS 0
+//#define Y_MIN_POS 0     // default position
+#define Y_MIN_POS -10     // sprite extruder
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
